@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aditya</title>
+<style>
+/* Header, footer */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: antiquewhite;
+    font-weight: bold;
+    color: grey;
+    font-size: 50px;
+    text-align: center;
+    line-height: 100px;
+    z-index: 1000;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: antiquewhite;
+    font-weight: bold;
+    color: darkgrey;
+    font-size: 20px;
+    text-align: center;
+    line-height: 100px;
+    z-index: 1000;
+}
+#nav {
+    position: fixed;
+    top: 0;
+    right: 25px;
+    height: 100px;
+    line-height: 100px;
+    z-index: 1000;
+    font-size: 24px;
+}
+
+/* Layout */
+#left_content {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 480px;
+    height: calc(100vh - 200px);
+    background-color: beige;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#right_content {
+    position: absolute;
+    top: 100px;
+    left: 500px; /* right after left content */
+    width: calc(100% - 500px);
+    height: calc(100vh - 200px);
+    background-color: #f4f4f4;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Quiz box */
+.question-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+    max-width: 700px;
+    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.question {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+}
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+.options label {
+    background: #eef2f7;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.options label:hover {
+    background: #d9e4f5;
+    transform: scale(1.02);
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.buttons button {
+    padding: 12px 24px;
+    border: none;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.next {
+    background: #007bff;
+    color: white;
+}
+.next:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+.prev {
+    background: #6c757d;
+    color: white;
+}
+.prev:hover {
+    background: #5a6268;
+    transform: scale(1.05);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+    <div id="header">
+        <div id="nav"> 
+            <a href="index2.html">home</a> |
+            <a href="about.html">about</a> |
+            <a href="contact.html">contact</a>
+        </div>
+    </div>
+
+    <div id="left_content">
+        <h1>Left content</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit...</p>
+    </div>
+
+    <div id="right_content">
+        <div class="question-box">
+            <p class="question" id="questionText"></p>
+            <div class="options" id="optionsContainer"></div>
+            <div class="buttons">
+                <button class="prev" id="prevBtn">Previous</button>
+                <button class="next" id="nextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+<script>
+// Quiz data
+const quizData = [
+    { question: "What is the capital of France?", options: ["Paris", "Rome", "Madrid", "Berlin"] },
+    { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Saturn"] },
+    { question: "What is the largest ocean on Earth?", options: ["Indian Ocean", "Atlantic Ocean", "Pacific Ocean", "Arctic Ocean"] }
+];
+
+let currentQuestionIndex = 0;
+const questionText = document.getElementById("questionText");
+const optionsContainer = document.getElementById("optionsContainer");
+
+function loadQuestion(index) {
+    const currentQuestion = quizData[index];
+    questionText.textContent = `Q${index + 1}. ${currentQuestion.question}`;
+    optionsContainer.innerHTML = "";
+    currentQuestion.options.forEach((option, i) => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="q${index}"> ${String.fromCharCode(65 + i)}) ${option}`;
+        optionsContainer.appendChild(label);
+    });
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+    if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion(currentQuestionIndex);
+    }
+});
+document.getElementById("prevBtn").addEventListener("click", () => {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion(currentQuestionIndex);
+    }
+});
+
+loadQuestion(currentQuestionIndex);
+</script>
+</body>
+</html>
