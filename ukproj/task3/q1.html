@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Login Page</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6c63ff, #3f3d56);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .login-card {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .login-card h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .input-group label {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      font-size: 14px;
+      color: #aaa;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus,
+    .input-group input:valid {
+      border-color: #6c63ff;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:valid + label {
+      top: -8px;
+      left: 8px;
+      font-size: 12px;
+      color: #6c63ff;
+      background: #fff;
+      padding: 0 4px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #5a54e2;
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+    }
+
+    .signup-text {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .signup-text a {
+      color: #6c63ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Please login to your account</p>
+      <form>
+        <!-- Username or Email field -->
+        <div class="input-group">
+          <input type="text" required />
+          <label>Username or Email</label>
+        </div>
+
+        <!-- Password field -->
+        <div class="input-group">
+          <input type="password" required />
+          <label>Password</label>
+        </div>
+
+        <!-- Login button -->
+        <button type="submit" class="btn">Login</button>
+
+        <!-- Signup text -->
+        <p class="signup-text">Don't have an account? <a href="#">Sign up</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

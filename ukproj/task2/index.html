@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Form</title>
+  <style>
+    :root{
+      --bg: #f1f3f4;
+      --card: #fff;
+      --accent: #673ab7;
+      --text: #202124;
+      --muted: #5f6368;
+      --border: #dadce0;
+      --focus: #1a73e8;
+      --error: #d93025;
+      --radius: 16px;
+      --shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, Roboto, Arial, sans-serif;
+      color:var(--text); background:var(--bg);
+    }
+    .topbar{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(255,255,255,.7); border-bottom:1px solid var(--border);
+    }
+    .topwrap{display:flex; align-items:center; gap:12px; padding:10px 16px; max-width:960px; margin:0 auto}
+    .logo{
+      width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg, var(--accent), #8e24aa);
+      display:grid; place-items:center; color:#fff; font-weight:700; font-size:14px;
+    }
+    .title{font-size:16px; font-weight:600}
+
+    .container{max-width:760px; margin:24px auto; padding:0 16px}
+    .form-card{
+      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+      margin-bottom:16px; border:1px solid var(--border);
+    }
+    .form-header{
+      padding:20px 24px; border-left:8px solid var(--accent);
+    }
+    .form-header h1{margin:0 0 8px; font-size:28px; font-weight:700}
+    .form-header p{margin:0; color:var(--muted)}
+
+    .group{padding:20px 24px; display:grid; gap:18px}
+
+    .field{display:grid; gap:8px}
+    .label{font-size:14px; color:var(--muted)}
+    .required::after{content:" *"; color:var(--error)}
+
+    .input{width:100%; border:none; border-bottom:2px solid var(--border); padding:10px 0; font-size:16px; background:transparent; outline:none}
+    .input:focus{border-color:var(--focus)}
+
+    .question-title{font-weight:600; margin-bottom:8px}
+    .options{display:grid; gap:10px;}
+    .choice{display:flex; align-items:center; gap:10px}
+    .choice input{accent-color:var(--accent)}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topwrap">
+      <div class="logo">QZ</div>
+      <div class="title">Quiz Form</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Header Block -->
+    <section class="form-card">
+      <div class="form-header">
+        <h1>Quiz Submission</h1>
+        <p>Please enter your details to attempt the quiz.</p>
+      </div>
+      <div class="group">
+        <div class="field">
+          <label class="label required">Email</label>
+          <input class="input" type="email" placeholder="name@example.com" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Question Blocks -->
+    <section class="form-card">
+      <div class="group">
+        <div class="question-title">Q1. Sample question goes here?</div>
+        <div class="options">
+          <label class="choice"><input type="radio" name="q1"> Option A</label>
+          <label class="choice"><input type="radio" name="q1"> Option B</label>
+          <label class="choice"><input type="radio" name="q1"> Option C</label>
+          <label class="choice"><input type="radio" name="q1"> Option D</label>
+          <label class="choice"><input type="radio" name="q1"> Option E</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-card"><div class="group"><div class="question-title">Q2. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q3. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q4. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q5. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q6. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q7. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q8. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q9. Sample question goes here?</div></div></section>
+    <section class="form-card"><div class="group"><div class="question-title">Q10. Sample question goes here?</div></div></section>
+
+        <!-- Submit Button -->
+        <div style="text-align:center; margin:30px 0;">
+            <button type="submit" 
+                    style="background:#673ab7; color:#fff; border:none; 
+                           padding:12px 28px; border-radius:999px; 
+                           font-size:16px; font-weight:600; cursor:pointer;">
+              Submit Quiz
+            </button>
+          </div>
+      
+  </main>
+</body>
+</html>
